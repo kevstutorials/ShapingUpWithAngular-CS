@@ -24,10 +24,10 @@
                 <!--Show Add to Cart Button if canPurchase is true-->
                 <button ng-show="product.canPurchase">Add to Cart</button>
                 <!--Only show gallery if there are images-->
-                <div class="gallery" ng-show="prudcts.images.length">
+                <section class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery">
                     <!--Selected Image-->
                     <div class="img-wrap">
-                        <img ng-src="{{product.images[0]}}"/>
+                        <img ng-src="{{product.images[gallery.current]}}"/>
                     </div>
                     <!--Thumbnails-->
                     <ul class="img-thumbnails clearfix">
@@ -35,7 +35,32 @@
                             <img ng-src="{{image}}" />
                         </li>
                     </ul>
-                </div>
+                </section>
+                <section class="tab" ng-controller="TabController as tab">
+                    <ul class="nav nav-pills">
+                        <li ng-class="{active: tab.isSet(1)}">
+                            <a href ng-click="tab.setTab(1)">Description</a>
+                        </li>
+                        <li ng-class="{active: tab.isSet(2)}">
+                            <a href ng-click="tab.setTab(2)">Specifications</a>
+                        </li>
+                        <li ng-class="{active: tab.isSet(3)}">
+                            <a href ng-click="tab.setTab(3)">Reviews</a>
+                        </li>
+                    </ul>
+                    <div ng-show="tab.isSet(1)">
+                        <h4>Description</h4>
+                        <blockquote>{{product.description}}</blockquote>
+                    </div>
+                    <div ng-show="tab.isSet(2)">
+                        <h4>Specifications</h4>
+                        <blockquote>Shine: {{product.shine}}</blockquote>
+                    </div>
+                    <div ng-show="tab.isSet(3)">
+                        <h4>Reviews</h4>
+                        <blockquote>{{product.reviews}}</blockquote>
+                    </div>
+                </section>
             </div>    
         </div>
         

@@ -5,6 +5,27 @@
     app.controller('StoreController', function(){
         this.products = gems;
     });
+    //Controller name GalleryController
+    app.controller('GalleryController', function(){
+        this.current = 0;
+        this.setCurrent = function(newGallery)
+        {
+            this.current = newGallery || 0;
+            
+        };
+    });
+    //Controller name TabController
+    app.controller('TabController', function(){
+        this.tab = 1;
+        this.setTab = function(selectedTab)
+        {
+            this.tab = selectedTab;    
+        }
+        this.isSet = function(givenTab)
+        {
+            return this.tab === givenTab;
+        }
+    });
     
     //Gems
     var gems = [
