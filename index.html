@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--Gem Store Directive -->  
+<html ng-app="gemStore">
+    <head>
+      <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css" />
+      <script type="text/javascript" src="JS/angular.min.js"></script>
+      <script type="text/javascript" src="JS/app.js"></script>
+        
+    </head>
+    <!--Controller-->
+    <body ng-controller="StoreController as store">
+        
+        <div class="product row" style="padding:20px;">
+            <h3>
+                <!--Product name-->
+                {{store.product.name}}
+                <em class="pull-right">
+                    <!--Product price-->
+                    {{store.product.price}}
+                </em>
+            </h3>
+        </div>
+        
+        
+    </body>
+</html>
