@@ -10,19 +10,34 @@
     <!--StoreController-->
     <!--Hide Product if sold out is true-->
     <body class="container" ng-controller="StoreController as store">
-        
-        <!--Loop through all products with ng-repeat-->
-        <div class="product row" ng-repeat="product in store.products" ng-hide="product.soldOut">
-            <h3>
+        <!--Products Container-->
+        <div class="list-group">
+            <!--Product Container-->
+            <!--Loop through all products with ng-repeat-->
+            <div class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
+                <h3>
                 <!--Product name-->
                 {{product.name}}
                 <!--Product price-->
-                <em class="pull-right">{{product.price}}</em>
-            </h3>
-            <!--Show Add to Cart Button if canPurchase is true-->
-            <button ng-show="product.canPurchase">Add to Cart</button>
+                <em class="pull-right">{{product.price | currency}}</em>
+                </h3>
+                <!--Show Add to Cart Button if canPurchase is true-->
+                <button ng-show="product.canPurchase">Add to Cart</button>
+                <!--Only show gallery if there are images-->
+                <div class="gallery" ng-show="prudcts.images.length">
+                    <!--Selected Image-->
+                    <div class="img-wrap">
+                        <img ng-src="{{product.images[0]}}"/>
+                    </div>
+                    <!--Thumbnails-->
+                    <ul class="img-thumbnails clearfix">
+                        <li class="small-image pull-left thumbnail" ng-repeat=" image in product.images">
+                            <img ng-src="{{image}}" />
+                        </li>
+                    </ul>
+                </div>
+            </div>    
         </div>
-        
         
     </body>
 </html>
