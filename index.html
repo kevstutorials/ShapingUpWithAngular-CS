@@ -7,18 +7,20 @@
       <script type="text/javascript" src="JS/app.js"></script>
         
     </head>
-    <!--Controller-->
-    <body ng-controller="StoreController as store">
+    <!--StoreController-->
+    <!--Hide Product if sold out is true-->
+    <body class="container" ng-controller="StoreController as store">
         
-        <div class="product row" style="padding:20px;">
+        <!--Loop through all products with ng-repeat-->
+        <div class="product row" ng-repeat="product in store.products" ng-hide="product.soldOut">
             <h3>
                 <!--Product name-->
-                {{store.product.name}}
-                <em class="pull-right">
-                    <!--Product price-->
-                    {{store.product.price}}
-                </em>
+                {{product.name}}
+                <!--Product price-->
+                <em class="pull-right">{{product.price}}</em>
             </h3>
+            <!--Show Add to Cart Button if canPurchase is true-->
+            <button ng-show="product.canPurchase">Add to Cart</button>
         </div>
         
         
