@@ -10,6 +10,10 @@
     <!--StoreController-->
     <!--Hide Product if sold out is true-->
     <body class="container" ng-controller="StoreController as store">
+        <header>
+            <h1 class="text-center">Flatlander Crafted Gems</h1>
+            <h2 class="text-center">– an Angular store –</h2>
+        </header>
         <!--Products Container-->
         <div class="list-group">
             <!--Product Container-->
@@ -57,8 +61,43 @@
                         <blockquote>Shine: {{product.shine}}</blockquote>
                     </div>
                     <div ng-show="tab.isSet(3)">
-                        <h4>Reviews</h4>
-                        <blockquote>{{product.reviews}}</blockquote>
+                        <ul>
+                            <h4>Reviews</h4>
+                            <!--Loop through all of the reviews-->
+                            <li ng-repeat="reviews in product.reviews">
+                                <blockquote>
+                                    <strong>{{reviews.stars}} Stars</strong>
+                                    {{reviews.body}}
+                                    <cite class="clearfix">-{{reviews.author}}</cite>
+                                </blockquote>
+                            </li>
+                        </ul>
+                        
+                        <!--Review Form-->
+                        <form name = "reviewForm">
+                            <!--Live Preview-->
+                            <blockquote>
+                                <strong>{{review.stars}} Stars</strong>
+                                {{review.body}}
+                                <cite class="clearfix">-{{review.author}}</cite>
+                            </blockquote>
+                            <!--Review Form-->
+                            <h4>Submit a Review</h4>
+                            <fieldset class="form-group">
+                                <select class="form-control" ng-model="review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                    <option value="">Rate the Product</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group" ng-model="review.body">
+                                <textarea class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group" ng-model="review.author">
+                                <input type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+                            </fieldset>
+                        </form>          
                     </div>
                 </section>
             </div>    
