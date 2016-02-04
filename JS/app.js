@@ -32,6 +32,8 @@
        this.review = {};
        this.addReview = function(product)
        {
+            //Created on Property before push
+            this.review.createdOn = Date.now();
             //Push review to array
             product.reviews.push(this.review);
             //After product has been added reset to empty
