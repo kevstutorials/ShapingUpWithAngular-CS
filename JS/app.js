@@ -26,6 +26,20 @@
             return this.tab === givenTab;
         }
     });
+    //Controller name ReviewController
+    app.controller('ReviewController', function(){
+       //Empty when first created
+       this.review = {};
+       this.addReview = function(product)
+       {
+            //Push review to array
+            product.reviews.push(this.review);
+            //After product has been added reset to empty
+            this.review = {};
+       };
+    });
+    
+    
     
     //Gems
     var gems = [
